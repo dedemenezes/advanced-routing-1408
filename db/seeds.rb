@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts 'Cleaning DB...'
+Restaurant.destroy_all
+
+
+puts 'Creating restaurants'
+outback = { name: 'Outback', address: 'Botafogo', rating: 5, chef_name: 'Paola Carosella' }
+temakeria = { name: 'Temakeria', address: 'Ipanema', rating: 4, chef_name: 'Jamie Oliver' }
+
+[outback, temakeria].each do |restaurant_attributes|
+  restaurant = Restaurant.create!(restaurant_attributes)
+  puts "Created #{restaurant.name}"
+end

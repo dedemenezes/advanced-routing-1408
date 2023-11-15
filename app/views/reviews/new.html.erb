@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Add your review</h1>
+  <%# <form action="/restaurants/13/reviews"></form> %>
+  <%= simple_form_for([@restaurant, @review]) do |f| %>
+    <%= f.input :content %>
+    <%= f.submit %>
+  <% end %>
+</div>

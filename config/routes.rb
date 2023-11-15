@@ -1,6 +1,25 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :restaurants do
+    # CUSTOM ROUTES
+    # custom index!
+    collection do
+      # /restaurants/whatever_you_type_below
+      get :top
+    end
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+    # custom show
+    member do
+      # /restaurants/:id/whatever_you_add
+      get :chef
+    end
+
+    # NESTED ROUTES
+    resources :reviews, only: [:new, :create]
+  end
+  resources :reviews, only: [:destroy]
+
+  # get '/restaurants/:id/reviews/new', to: 'reviews#new'
+  # get '/restaurants/top', to: 'restaurants#top'
+
+
 end
